@@ -6,7 +6,9 @@ class Solution {
         if(m+n!=s3.length()){
             return false;
         }
-        Boolean dp[][] = new Boolean[s1.length()+2][s2.length()+2];
+        
+        Boolean dp[][] = new Boolean[m+2][n+2];
+        
         return sol(0,s1,0,s2,0,s3,dp);
     }
     
@@ -24,11 +26,11 @@ class Solution {
         }
         
         boolean ans = false;
-        
-        if(s1.charAt(i)==s3.charAt(k) && sol(i+1,s1,j,s2,k+1,s3,dp) || s2.charAt(j)==s3.charAt(k) && sol(i,s1,j+1,s2,k+1,s3,dp)){
+        if(s1.charAt(i)==s3.charAt(k) && sol(i+1,s1,j,s2,k+1,s3,dp) || (s2.charAt(j)==s3.charAt(k) && sol(i,s1,j+1,s2,k+1,s3,dp))){
             ans = true;
         }
         
         return dp[i][j] = ans;
+        
     }
 }
