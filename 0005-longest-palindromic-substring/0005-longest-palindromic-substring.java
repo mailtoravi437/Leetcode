@@ -25,9 +25,9 @@ class Solution {
                 if(dp[i][j]==true){
                     ans = s.substring(i,j+1);
                 }
+                
             }
         }
-        
         return ans;
     }
 }
