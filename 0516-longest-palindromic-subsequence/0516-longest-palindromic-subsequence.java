@@ -1,9 +1,10 @@
 class Solution {
     public int longestPalindromeSubseq(String s) {
-        return sol(s,0,s.length()-1,new Integer[s.length()][s.length()]);
+        Integer dp[][] = new Integer[s.length()+2][s.length()+2];
+        return sol(0,s.length()-1,s,dp);
     }
     
-    public int sol(String s,int i,int j,Integer dp[][]){
+    public int sol(int i,int j,String s,Integer dp[][]){
         if(dp[i][j]!=null){
             return dp[i][j];
         }
@@ -13,13 +14,13 @@ class Solution {
         }
         
         if(i==j){
-            return dp[i][j] =  1;
+            return dp[i][j] = 1;
         }
         
         if(s.charAt(i)==s.charAt(j)){
-            return dp[i][j] = 2+sol(s,i+1,j-1,dp);
+            return dp[i][j] = 2+sol(i+1,j-1,s,dp);
         }
         
-        return dp[i][j] = Math.max(sol(s,i+1,j,dp),sol(s,i,j-1,dp));
+        return dp[i][j] = Math.max(sol(i+1,j,s,dp),sol(i,j-1,s,dp));
     }
 }
