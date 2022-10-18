@@ -8,7 +8,6 @@ class Solution {
         Arrays.fill(cnt,1);
         
         int maxi = Integer.MIN_VALUE;
-        
         for(int i=0;i<n;i++){
             for(int j=0;j<i;j++){
                 if(nums[i]>nums[j] && dp[i]<dp[j]+1){
@@ -18,12 +17,10 @@ class Solution {
                 else if(nums[i]>nums[j] && dp[i]==dp[j]+1){
                     cnt[i] += cnt[j];
                 }
-                
             }
-                maxi = Math.max(maxi,dp[i]);
-
+            
+            maxi = Math.max(maxi,dp[i]);
         }
-        
         
         int ans = 0;
         for(int i=0;i<n;i++){
