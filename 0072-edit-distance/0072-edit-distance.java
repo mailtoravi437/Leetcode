@@ -1,41 +1,38 @@
 class Solution {
     public int minDistance(String word1, String word2) {
-        int m = word1.length();
-        int n = word2.length();
+        int n = word1.length();
+        int m = word2.length();
         
-        Integer dp[][] = new Integer[m+2][n+2];
+        Integer dp[][] = new Integer[n+2][m+2];
         
-        return sol(word1,m,word2,n,dp);
+        return sol(word1,n,word2,m,dp);
     }
     
-    public int sol(String word1,int m,String word2,int n,Integer dp[][]){
-        if(m==0 && n==0){
+    public int sol(String word1,int n,String word2,int m,Integer dp[][]){
+        if(n==0 && m==0){
             return 0;
         }
-        
-        if(dp[m][n]!=null){
-            return dp[m][n];
+        if(n==0){
+            return m;
         }
-        
         if(m==0){
             return n;
         }
         
-        if(n==0){
-            return m;
+        if(dp[n][m]!=null){
+            return dp[n][m];
         }
         
-        if(word1.charAt(m-1)==word2.charAt(n-1)){
-            return dp[m][n] = sol(word1,m-1,word2,n-1,dp);
+        if(word1.charAt(n-1)==word2.charAt(m-1)){
+            return dp[n][m] = sol(word1,n-1,word2,m-1,dp);
         }
         
         else{
-            int insert = sol(word1,m,word2,n-1,dp);
-            int delete = sol(word1,m-1,word2,n,dp);
+            int insert = sol(word1,n,word2,m-1,dp);
+            int delete = sol(word1,n-1,word2,m,dp);
+            int replace = sol(word1,n-1,word2,m-1,dp);
             
-            int replace = sol(word1,m-1,word2,n-1,dp);
-            
-            return dp[m][n] = 1+Math.min(insert,Math.min(delete,replace));
+            return dp[n][m] = 1+Math.min(insert,Math.min(delete,replace));
         }
     }
 }
