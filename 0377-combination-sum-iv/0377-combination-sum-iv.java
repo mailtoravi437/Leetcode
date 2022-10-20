@@ -1,6 +1,5 @@
 class Solution {
     public int combinationSum4(int[] nums, int target) {
-        int n = nums.length;
         Integer dp[] = new Integer[target+2];
         return sol(nums,target,dp);
     }
@@ -8,10 +7,6 @@ class Solution {
     public int sol(int nums[],int target,Integer dp[]){
         if(target==0){
             return 1;
-        }
-        
-        if(target<0){
-            return 0;
         }
         
         if(dp[target]!=null){
