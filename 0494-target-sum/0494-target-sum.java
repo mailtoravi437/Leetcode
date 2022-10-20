@@ -10,6 +10,7 @@ class Solution {
             if(sum==target){
                 count++;
             }
+            
             return count;
         }
         
