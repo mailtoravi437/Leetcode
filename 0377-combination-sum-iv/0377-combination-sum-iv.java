@@ -16,7 +16,7 @@ class Solution {
         int count = 0;
         for(int i=0;i<nums.length;i++){
             if(target-nums[i]>=0){
-                count += sol(nums,target-nums[i],dp);
+            count += sol(nums,target-nums[i],dp);
             }
         }
         
