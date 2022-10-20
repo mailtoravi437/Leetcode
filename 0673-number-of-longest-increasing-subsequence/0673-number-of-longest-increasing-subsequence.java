@@ -7,8 +7,7 @@ class Solution {
         Arrays.fill(dp,1);
         Arrays.fill(cnt,1);
         
-        int max = Integer.MIN_VALUE;
-        
+        int max = 0;
         for(int i=0;i<n;i++){
             for(int j=0;j<i;j++){
                 if(nums[i]>nums[j] && dp[i]<dp[j]+1){
@@ -19,8 +18,8 @@ class Solution {
                     cnt[i] += cnt[j];
                 }
             }
-            max = Math.max(max,dp[i]);
             
+            max = Math.max(max,dp[i]);
         }
         
         int ans = 0;
