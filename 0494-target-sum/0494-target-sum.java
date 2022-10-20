@@ -11,19 +11,15 @@ class Solution {
                 count++;
             }
             return count;
-
         }
         
         if(dp[idx][sum+1001]!=null){
-            return  dp[idx][sum+1001];
+            return dp[idx][sum+1001];
         }
-        
-        
         
         int pos = sol(idx+1,sum+nums[idx],target,nums,count,dp);
         int neg = sol(idx+1,sum-nums[idx],target,nums,count,dp);
         
-        dp[idx][sum+1001] = pos+neg;
-        return dp[idx][sum+1001];
+        return dp[idx][sum+1001] = pos+neg;
     }
 }
