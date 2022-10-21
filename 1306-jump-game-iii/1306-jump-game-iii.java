@@ -17,12 +17,12 @@ class Solution {
             
             hset.add(i);
             
-            if(i+arr[i]<n){
-                queue.add(i+arr[i]);
-            }
-            
             if(i-arr[i]>=0){
                 queue.add(i-arr[i]);
+            }
+            
+            if(i+arr[i]<n){
+                queue.add(i+arr[i]);
             }
         }
         
