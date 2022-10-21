@@ -4,6 +4,7 @@ class Solution {
         int n = s.length();
         Stack<Integer> st = new Stack<>();
         st.push(-1);
+        
         for(int i=0;i<n;i++){
             if(s.charAt(i)=='('){
                 st.push(i);
