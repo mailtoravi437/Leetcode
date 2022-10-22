@@ -5,27 +5,27 @@ class Solution {
             for(int j=0;j<t.length();j++){
                 int x = i;
                 int y = j;
+                
                 int diff = 0;
+                
                 while(x<s.length() && y<t.length()){
                     if(s.charAt(x)!=t.charAt(y)){
                         diff++;
-                        
-                        
-                        
                     }
+                    
                     if(diff==1){
-                            ans++;
-                        }
+                        ans++;
+                    }
                     if(diff==2){
-                            break;
-                        }
+                        break;
+                    }
                     
                     x++;
                     y++;
                 }
             }
         }
-                
-                return ans;
+        
+        return ans;
     }
 }
