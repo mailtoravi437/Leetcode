@@ -21,24 +21,27 @@ class Solution {
     public List<TreeNode> sol(int n){
         if(n==1){
             List<TreeNode> res = new ArrayList<>();
-            res.add(new TreeNode(0));
+            TreeNode root = new TreeNode(0);
+            res.add(root);
             return res;
         }
         
         List<TreeNode> res = new ArrayList<>();
         
-        for(int i=1;i<n;i+=2){
-            List<TreeNode> l = sol(i);
-            List<TreeNode> r = sol(n-i-1);
-            for(TreeNode left : l){
-                for(TreeNode right : r){
-                    TreeNode root = new TreeNode(0);
-                    root.left = left;
-                    root.right = right;
-                    
-                    res.add(root);
+            for(int i=1;i<n;i+=2){
+                List<TreeNode>  l = sol(i);
+                List<TreeNode>  r = sol(n-i-1);
+                
+                for(TreeNode left : l){
+                    for(TreeNode right : r){
+                        TreeNode root = new TreeNode(0);
+                        root.left = left;
+                        root.right = right;
+                        
+                        res.add(root);
+                    }
                 }
-            }   
+            
         }
         
         return res;
