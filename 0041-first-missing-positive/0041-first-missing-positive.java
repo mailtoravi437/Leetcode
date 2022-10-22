@@ -8,12 +8,10 @@ class Solution {
             }
         }
         
-        
         for(int i=0;i<n;i++){
             int num = Math.abs(nums[i]);
-            
             if(num>0 && num<=n){
-                nums[num-1] = -Math.abs(nums[num-1]);
+                nums[num-1] =  -Math.abs(nums[num-1]);
             }
         }
         
