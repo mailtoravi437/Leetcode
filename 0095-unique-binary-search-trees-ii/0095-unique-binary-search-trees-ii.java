@@ -19,7 +19,7 @@ class Solution {
     }
     
     public List<TreeNode> sol(int s,int e){
-        List<TreeNode> res = new LinkedList<TreeNode>();
+        List<TreeNode> res = new ArrayList<>();
         if(s>e){
             res.add(null);
             return res;
