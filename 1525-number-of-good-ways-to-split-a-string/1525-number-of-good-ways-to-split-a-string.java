@@ -7,21 +7,21 @@ class Solution {
         for(int i=0;i<n;i++){
             right.put(s.charAt(i),right.getOrDefault(s.charAt(i),0)+1);
         }
-        
         int count = 0;
-        
         for(int i=0;i<n;i++){
-            char curr = s.charAt(i);
-            left.put(curr,left.getOrDefault(curr,0)+1);
-            right.put(curr,right.getOrDefault(curr,0)-1);
+            char ch = s.charAt(i);
+            left.put(ch,left.getOrDefault(ch,0)+1);
+            right.put(ch,right.getOrDefault(ch,0)-1);
             
-            if(right.get(curr)<=0){
-                right.remove(curr);
+            
+            if(right.get(ch)<=0){
+                right.remove(ch);
             }
             
             if(left.size()==right.size()){
                 count++;
             }
+            
         }
         
         return count;
