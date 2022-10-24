@@ -25,11 +25,13 @@ class Solution {
                 rightTail.next = head;
                 rightTail = rightTail.next;
             }
+            
             head = head.next;
         }
         
         leftTail.next = right.next;
         rightTail.next = null;
+        
         return left.next;
     }
 }
