@@ -45,11 +45,10 @@ class Solution {
             fast = fast.next.next;
         }
         
-        
-        
         TreeNode root = new TreeNode(slow.val);
         root.left = sol(head,slow);
         root.right = sol(slow.next,tail);
+        
         return root;
     }
 }
