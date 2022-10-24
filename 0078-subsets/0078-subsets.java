@@ -2,23 +2,17 @@ class Solution {
     public List<List<Integer>> subsets(int[] nums) {
         List<List<Integer>> ans = new ArrayList<>();
         List<Integer> res = new ArrayList<>();
-        
         Arrays.sort(nums);
-        backtrack(nums,ans,res,0);
-            
+        sol(0,res,ans,nums);
         return ans;
     }
     
-    public void backtrack(int nums[],List<List<Integer>> ans,List<Integer> res,int start){
+    public void sol(int idx,List<Integer> res,List<List<Integer>> ans,int nums[]){
         ans.add(new ArrayList<>(res));
-        
-        
-        for(int i=start;i<nums.length;i++){
+        for(int i=idx;i<nums.length;i++){
             res.add(nums[i]);
-            backtrack(nums,ans,res,i+1);
+            sol(i+1,res,ans,nums);
             res.remove(res.size()-1);
         }
-        
-        
     }
 }
