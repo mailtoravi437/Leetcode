@@ -2,11 +2,11 @@ class Solution {
     public List<List<Integer>> permute(int[] nums) {
         List<List<Integer>> ans = new ArrayList<>();
         List<Integer> res = new ArrayList<>();
-        sol(nums,ans,res);
+        sol(res,ans,nums);
         return ans;
     }
     
-    public void sol(int nums[],List<List<Integer>> ans,List<Integer> res){
+    public void sol(List<Integer> res,List<List<Integer>> ans,int nums[]){
         if(res.size()==nums.length){
             ans.add(new ArrayList<>(res));
         }
@@ -16,7 +16,7 @@ class Solution {
                 continue;
             }
             res.add(nums[i]);
-            sol(nums,ans,res);
+            sol(res,ans,nums);
             res.remove(res.size()-1);
         }
     }
