@@ -22,7 +22,6 @@ class Solution {
         else if(right==null){
             return left;
         }
-        
         return root;
     }
 }
