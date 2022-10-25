@@ -9,7 +9,7 @@ class Solution {
             }
             
             nums[index] = -nums[index];
-        } 
+        }
         
         return res;
     }
