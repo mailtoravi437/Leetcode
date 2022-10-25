@@ -3,7 +3,6 @@ class Solution {
         if(s==null || s.length()<=1){
             return true;
         }
-        
         HashMap<Character,Character> hmap = new HashMap<>();
         for(int i=0;i<s.length();i++){
             char a = s.charAt(i);
