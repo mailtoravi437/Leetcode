@@ -1,6 +1,5 @@
 class Solution {
     public int[] sortArray(int[] nums) {
-        
         mergeSort(nums,0,nums.length-1);
         return nums;
     }
@@ -10,29 +9,31 @@ class Solution {
             return;
         }
         
-        int m = l+(r-l)/2;
-        mergeSort(nums,l,m);
-        mergeSort(nums,m+1,r);
-        merge(nums,l,m,r);
+        int mid = l+(r-l)/2;
+        mergeSort(nums,l,mid);
+        mergeSort(nums,mid+1,r);
+        
+        merge(nums,l,mid,r);
     }
     
-    public void merge(int nums[],int l,int m,int r){
+    public void merge(int nums[],int l,int mid,int r){
         int merged[] = new int[r-l+1];
+        
         int idx1 = l;
-        int idx2 = m+1;
+        int idx2 = mid+1;
+        
         int x = 0;
         
-        
-        while(idx1<=m && idx2<=r){
+        while(idx1<=mid && idx2<=r){
             if(nums[idx1]<nums[idx2]){
-                merged[x++] = nums[idx1++];
+                 merged[x++] = nums[idx1++];
             }
             else{
                 merged[x++] = nums[idx2++];
             }
         }
         
-        while(idx1<=m){
+        while(idx1<=mid){
             merged[x++] = nums[idx1++];
         }
         
