@@ -9,7 +9,6 @@ class Solution {
             if(prices[i]<min_Price){
                 min_Price = prices[i];
             }
-            
             else{
                 profit = prices[i]-min_Price;
             }
@@ -18,6 +17,5 @@ class Solution {
         }
         
         return max_Profit;
-        
     }
 }
