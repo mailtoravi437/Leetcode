@@ -13,9 +13,9 @@ class Solution {
             return dp[n];
         }
         
-        int lh = sol(n-1,dp);
-        int rh = sol(n-2,dp);
+        int first = sol(n-1,dp);
+        int second = sol(n-2,dp);
         
-        return dp[n] = lh+rh;
+        return dp[n] = first+second;
     }
 }
