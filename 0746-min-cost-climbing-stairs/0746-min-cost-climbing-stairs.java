@@ -9,13 +9,14 @@ class Solution {
         if(n==0 || n==1){
             return 0;
         }
+        
         if(dp[n]!=null){
             return dp[n];
         }
         
         int one = sol(cost,dp,n-1)+cost[n-1];
-        int two = sol(cost,dp,n-2)+cost[n-2];
+        int second = sol(cost,dp,n-2)+cost[n-2];
         
-        return dp[n] = Math.min(one,two);
+        return dp[n] = Math.min(one,second);
     }
 }
