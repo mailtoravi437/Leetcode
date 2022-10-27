@@ -1,7 +1,7 @@
 class Solution {
     public int numTrees(int n) {
         Integer dp[] = new Integer[n+2];
-        return sol(n,dp);   
+        return sol(n,dp);
     }
     
     public int sol(int n,Integer dp[]){
