@@ -22,7 +22,7 @@ class Solution {
         int way2 = 0;
         
         if(idx<s.length()-1 && Integer.parseInt(s.substring(idx,idx+2))<=26){
-            way2 =  sol(s,dp,idx+2);
+            way2 = sol(s,dp,idx+2);
         }
         
         return dp[idx] = way1+way2;
