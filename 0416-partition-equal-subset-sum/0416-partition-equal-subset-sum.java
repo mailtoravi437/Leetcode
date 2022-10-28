@@ -1,5 +1,6 @@
 class Solution {
     public boolean canPartition(int[] nums) {
+        int n = nums.length;
         int sum = 0;
         for(int a : nums){
             sum += a;
@@ -9,26 +10,23 @@ class Solution {
             return false;
         }
         
-        sum = sum/2;
-        
-        Boolean dp[][] = new Boolean[nums.length+2][sum+2];
-        return sol(0,sum,nums,dp);
+        Boolean dp[][] = new Boolean[n+2][sum/2+2];
+        return sol(nums,sum/2,dp,0);
     }
     
-    public boolean sol(int idx,int target,int nums[],Boolean dp[][]){
-        if(target==0){
+    public boolean sol(int nums[],int sum,Boolean dp[][],int idx){
+        if(sum==0){
             return true;
         }
         
-        if(idx>=nums.length || target<0){
+        if(sum<0 || idx>=nums.length){
             return false;
         }
         
-        if(dp[idx][target]!=null){
-            return dp[idx][target];
+        if(dp[idx][sum]!=null){
+            return dp[idx][sum];
         }
         
-        dp[idx][target] = sol(idx+1,target-nums[idx],nums,dp) || sol(idx+1,target,nums,dp);
-        return dp[idx][target];
+        return dp[idx][sum] = sol(nums,sum-nums[idx],dp,idx+1) || sol(nums,sum,dp,idx+1);
     }
 }
