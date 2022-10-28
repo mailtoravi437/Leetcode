@@ -1,11 +1,11 @@
 class Solution {
     public int maxProfit(int[] prices, int fee) {
         int n = prices.length;
-        Integer dp[][] = new Integer[n+2][4];
-        return sol(0,0,prices,fee,dp);
+        Integer dp[][] = new Integer[n+2][3];
+        return sol(prices,fee,0,0,dp);
     }
     
-    public int sol(int buy,int idx,int prices[],int fee,Integer dp[][]){
+    public int sol(int prices[],int fee,int buy,int idx,Integer dp[][]){
         if(idx>=prices.length){
             return 0;
         }
@@ -14,20 +14,20 @@ class Solution {
             return dp[idx][buy];
         }
         
-        int maxValue = Integer.MIN_VALUE;
+        int res = 0;
         if(buy==0){
-            int buyToday = -prices[idx]+sol(1,idx+1,prices,fee,dp);
-            int notBuy = sol(0,idx+1,prices,fee,dp);
+            int buyToday = -prices[idx]+sol(prices,fee,1,idx+1,dp);
+            int notBuy = sol(prices,fee,0,idx+1,dp);
             
-            maxValue = Math.max(buyToday,notBuy);
+            res = Math.max(buyToday,notBuy);
         }
         else{
-            int sellToday = prices[idx]-fee+sol(0,idx+1,prices,fee,dp);
-            int notSell = sol(1,idx+1,prices,fee,dp);
+            int sellToday = prices[idx]-fee+sol(prices,fee,0,idx+1,dp);
+            int notSell = sol(prices,fee,1,idx+1,dp);
             
-            maxValue = Math.max(sellToday,notSell);
+            res = Math.max(sellToday,notSell);
         }
         
-        return dp[idx][buy] = maxValue;
+        return dp[idx][buy] = res;
     }
 }
