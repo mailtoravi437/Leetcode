@@ -16,12 +16,14 @@ class Solution {
         
         int max = Integer.MIN_VALUE;
         int ans = Integer.MIN_VALUE;
-        
         int len = 0;
+        
         for(int k1=idx;k1<Math.min(idx+k,n);k1++){
             max = Math.max(max,arr[k1]);
             len++;
+            
             int nextCall = sol(arr,k,k1+1,dp,n);
+            
             ans = Math.max(ans,nextCall+len*max);
         }
         
