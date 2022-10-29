@@ -5,9 +5,9 @@ class Solution {
         return sol(books,shelfWidth,0,0,0,dp);
     }
     
-    public int sol(int books[][],int maxWidth,int idx,int width,int lastheight,Integer dp[][]){
+    public int sol(int books[][],int maxWidth,int idx,int lHeight,int width,Integer dp[][]){
         if(idx>=books.length){
-            return lastheight;
+            return lHeight;
         }
         
         if(dp[idx][width]!=null){
@@ -18,11 +18,12 @@ class Solution {
         int op2 = Integer.MAX_VALUE;
         
         if(width+books[idx][0]<=maxWidth){
-            op1 = sol(books,maxWidth,idx+1,width+books[idx][0],Math.max(lastheight,books[idx][1]),dp);
+            op1 = sol(books,maxWidth,idx+1,Math.max(lHeight,books[idx][1]),books[idx][0]+width,dp);
         }
         
-        op2 = lastheight+sol(books,maxWidth,idx+1,books[idx][0],books[idx][1],dp);
+        op2 = lHeight+sol(books,maxWidth,idx+1,books[idx][1],books[idx][0],dp);
         
         return dp[idx][width] = Math.min(op1,op2);
     }
+    
 }
