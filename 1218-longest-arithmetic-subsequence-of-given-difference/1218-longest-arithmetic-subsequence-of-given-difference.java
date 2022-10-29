@@ -1,11 +1,11 @@
 class Solution {
     public int longestSubsequence(int[] arr, int difference) {
-        HashMap<Integer,Integer> hmap = new HashMap<>();
         int n = arr.length;
         int ans = 0;
+        HashMap<Integer,Integer> hmap = new HashMap<>();
         for(int i=0;i<n;i++){
-            int required = arr[i]-difference;
             int temp = 0;
+            int required = arr[i]-difference;
             if(hmap.containsKey(required)){
                 temp = hmap.get(required);
             }
