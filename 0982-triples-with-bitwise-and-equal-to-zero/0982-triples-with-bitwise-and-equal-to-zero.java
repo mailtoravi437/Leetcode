@@ -7,16 +7,15 @@ class Solution {
             }
         }
         
-        int count = 0;
-        
-        for(int i=0;i<res.length;i++){
-            for(int a : nums){
-                if((i&a)==0){
-                    count += res[i];
+        int ans = 0;
+        for(int a : nums){
+            for(int i=0;i<res.length;i++){
+                if((a&i)==0){
+                    ans += res[i];
                 }
             }
         }
         
-        return count;
+        return ans;
     }
 }
