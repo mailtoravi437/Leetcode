@@ -2,7 +2,8 @@ class Solution {
     public int findLength(int[] nums1, int[] nums2) {
         int n = nums1.length;
         int m = nums2.length;
-        int dp[][] = new int[nums1.length+1][nums2.length+1];
+        
+        int dp[][] = new int[n+1][m+1];
         int ans = Integer.MIN_VALUE;
         
         for(int i=1;i<=n;i++){
@@ -13,10 +14,9 @@ class Solution {
                 else{
                     dp[i][j] = 0;
                 }
-                            ans = Math.max(ans,dp[i][j]);
-
+                
+                ans = Math.max(ans,dp[i][j]);
             }
-            
         }
         
         return ans;
