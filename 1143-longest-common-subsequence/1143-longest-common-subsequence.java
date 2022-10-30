@@ -20,6 +20,7 @@ class Solution {
         if(text1.charAt(n-1)==text2.charAt(m-1)){
             return dp[n][m] = 1+sol(text1,n-1,text2,m-1,dp);
         }
-        return dp[n][m] = Math.max(sol(text1,n,text2,m-1,dp),sol(text1,n-1,text2,m,dp));
+        
+        return dp[n][m] = Math.max(sol(text1,n-1,text2,m,dp),sol(text1,n,text2,m-1,dp));
     }
 }
