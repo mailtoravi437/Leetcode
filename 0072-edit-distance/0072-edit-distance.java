@@ -9,12 +9,10 @@ class Solution {
     }
     
     public int sol(String word1,int n,String word2,int m,Integer dp[][]){
-        if(n==0 && m==0){
-            return 0;
-        }
         if(n==0){
             return m;
         }
+        
         if(m==0){
             return n;
         }
@@ -27,12 +25,11 @@ class Solution {
             return dp[n][m] = sol(word1,n-1,word2,m-1,dp);
         }
         
-        else{
-            int insert = sol(word1,n,word2,m-1,dp);
-            int delete = sol(word1,n-1,word2,m,dp);
-            int replace = sol(word1,n-1,word2,m-1,dp);
-            
-            return dp[n][m] = 1+Math.min(insert,Math.min(delete,replace));
-        }
+        int insert = sol(word1,n-1,word2,m,dp);
+        int delete = sol(word1,n,word2,m-1,dp);
+        int replace = sol(word1,n-1,word2,m-1,dp);
+        
+        
+        return dp[n][m] = 1+Math.min(insert,Math.min(delete,replace));
     }
 }
