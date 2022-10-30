@@ -7,25 +7,25 @@ class Solution {
         Arrays.sort(nums);
         
         int maxIdx = 0;
-        for(int i=1;i<n;i++){
+        for(int i=0;i<n;i++){
             for(int j=0;j<i;j++){
-                if(nums[i]%nums[j]==0 && dp[i]<dp[j]+1){
+                if((nums[i]%nums[j]==0) && (dp[i]<dp[j]+1)){
                     dp[i] = dp[j]+1;
                     hash[i] = j;
                     
                     if(dp[maxIdx]<dp[i]){
                         maxIdx = i;
-                    }
+                     }
                 }
             }
         }
         
-        List<Integer> alist = new ArrayList<>();
+        List<Integer> res = new ArrayList<>();
         while(maxIdx>=0){
-            alist.add(nums[maxIdx]);
+            res.add(nums[maxIdx]);
             maxIdx = hash[maxIdx];
         }
         
-        return alist;
+        return res;
     }
 }
