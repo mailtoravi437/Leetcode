@@ -7,10 +7,10 @@ class Solution {
         
         int dp[] = new int[n+1];
         Arrays.fill(dp,Integer.MAX_VALUE);
-        
         dp[0] = Integer.MIN_VALUE;
+        
         for(int i=0;i<n;i++){
-            int idx = binarySearch(0,n-1,nums[i],dp);
+            int idx = lower_bound(0,n-1,nums[i],dp);
             if(nums[i]>dp[idx-1] && nums[i]<dp[idx]){
                 dp[idx] = nums[i];
             }
@@ -27,12 +27,13 @@ class Solution {
         return ma;
     }
     
-    public int binarySearch(int low,int end,int key,int dp[]){
+    public int lower_bound(int low,int high,int key,int dp[]){
         int s = low;
-        int e = end;
+        int e = high;
         
         while(s<=e){
             int mid = s+(e-s)/2;
+            
             if(dp[mid]==key){
                 return mid;
             }
