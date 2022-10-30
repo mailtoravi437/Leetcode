@@ -9,10 +9,10 @@ class Solution {
         
         Boolean dp[][] = new Boolean[m+2][n+2];
         
-        return sol(0,s1,0,s2,0,s3,dp);
+        return sol(s1,0,s2,0,s3,0,dp);
     }
     
-    public boolean sol(int i,String s1,int j,String s2,int k,String s3,Boolean dp[][]){
+    public boolean sol(String s1,int i,String s2,int j,String s3,int k,Boolean dp[][]){
         if(i==s1.length()){
             return dp[i][j] = s2.substring(j).equals(s3.substring(k));
         }
@@ -26,11 +26,10 @@ class Solution {
         }
         
         boolean ans = false;
-        if(s1.charAt(i)==s3.charAt(k) && sol(i+1,s1,j,s2,k+1,s3,dp) || (s2.charAt(j)==s3.charAt(k) && sol(i,s1,j+1,s2,k+1,s3,dp))){
+        if(s1.charAt(i)==s3.charAt(k)  && sol(s1,i+1,s2,j,s3,k+1,dp) || s2.charAt(j)==s3.charAt(k) && sol(s1,i,s2,j+1,s3,k+1,dp)){
             ans = true;
         }
         
         return dp[i][j] = ans;
-        
     }
 }
