@@ -10,7 +10,7 @@ class Solution {
             int nextPos = -1;
             
             for(int i=0;i<n;i++){
-                nextPos = currPos+grid[i][currPos];
+                nextPos = grid[i][currPos]+currPos;
                 
                 if(nextPos<0 || nextPos>=m || grid[i][currPos]!=grid[i][nextPos]){
                     currPos = -1;
@@ -18,7 +18,6 @@ class Solution {
                 }
                 
                 currPos = nextPos;
-                
             }
             
             ans[j] = currPos;
