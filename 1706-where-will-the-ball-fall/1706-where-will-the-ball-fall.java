@@ -11,12 +11,14 @@ class Solution {
             
             for(int i=0;i<n;i++){
                 nextPos = currPos+grid[i][currPos];
+                
                 if(nextPos<0 || nextPos>=m || grid[i][currPos]!=grid[i][nextPos]){
                     currPos = -1;
                     break;
                 }
                 
                 currPos = nextPos;
+                
             }
             
             ans[j] = currPos;
