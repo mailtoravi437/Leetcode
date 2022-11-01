@@ -1,7 +1,8 @@
 class Solution {
     public int[] findRedundantConnection(int[][] edges) {
         int n = edges.length;
-        int parent[] = new int[edges.length+1];
+        
+        int parent[] = new int[n+1];
         for(int i=0;i<=n;i++){
             parent[i] = i;
         }
@@ -19,7 +20,7 @@ class Solution {
                 int py = find(v,parent);
                 
                 parent[py] = px;
-            } 
+            }
         }
         
         return new int[2];
@@ -30,6 +31,6 @@ class Solution {
             return x;
         }
         
-        return parent[x] = find(parent[x],parent);
+        return find(parent[x],parent);
     }
 }
