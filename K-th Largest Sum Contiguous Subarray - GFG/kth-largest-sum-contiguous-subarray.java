@@ -71,7 +71,7 @@ class Solution {
                     pq.add(sum);
                 }
                 else{
-                    if(sum>pq.peek()){
+                    if(pq.peek()<sum){
                         pq.poll();
                         pq.add(sum);
                     }
