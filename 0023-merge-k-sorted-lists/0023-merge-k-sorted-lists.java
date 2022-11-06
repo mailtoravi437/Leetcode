@@ -20,11 +20,11 @@ class Solution {
         }
         
         if(s<e){
-        int mid = s+(e-s)/2;
-        ListNode l1 = mergeSort(lists,s,mid);
-        ListNode l2 = mergeSort(lists,mid+1,e);
-        
-        return merge(l1,l2);
+            int mid = s+(e-s)/2;
+            ListNode l1 = mergeSort(lists,s,mid);
+            ListNode l2 = mergeSort(lists,mid+1,e);
+            
+            return merge(l1,l2);
         }
         
         else{
@@ -45,6 +45,7 @@ class Solution {
             l1.next = merge(l1.next,l2);
             return l1;
         }
+        
         else{
             l2.next = merge(l1,l2.next);
             return l2;
