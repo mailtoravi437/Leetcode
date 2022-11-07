@@ -14,18 +14,17 @@
  * }
  */
 class Solution {
-    int rootToLeaf = 0;
+    int sum = 0;
     public int sumRootToLeaf(TreeNode root) {
         preorder(root,0);
-        return rootToLeaf;
+        return sum;
     }
     
     public void preorder(TreeNode root,int currSum){
         if(root!=null){
             currSum = (currSum<<1) | root.val;
-            
             if(root.left==null && root.right==null){
-                rootToLeaf += currSum;
+                sum += currSum;
             }
             
             preorder(root.left,currSum);
