@@ -18,10 +18,11 @@ class Solution {
         if(root==null){
             return true;
         }
-        return sol(root,root);
+        
+        return helper(root,root);
     }
     
-    public boolean sol(TreeNode root1,TreeNode root2){
+    public boolean helper(TreeNode root1,TreeNode root2){
         if(root1==null && root2==null){
             return true;
         }
@@ -30,8 +31,6 @@ class Solution {
             return false;
         }
         
-        
-        
-        return (root1.val==root2.val) && sol(root1.left,root2.right) && sol(root1.right,root2.left);
+        return (root1.val==root2.val) && helper(root1.left,root2.right) && helper(root1.right,root2.left);
     }
 }
