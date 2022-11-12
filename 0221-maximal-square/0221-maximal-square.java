@@ -15,9 +15,10 @@ class Solution {
                     else{
                         dp[i][j] = 1+Math.min(dp[i-1][j-1],Math.min(dp[i-1][j],dp[i][j-1]));
                     }
-                    ans = Math.max(ans,dp[i][j]);
                     
                 }
+                                    ans = Math.max(ans,dp[i][j]);
+
             }
         }
         
