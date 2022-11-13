@@ -2,10 +2,10 @@ class Solution {
     public int mincostTickets(int[] days, int[] costs) {
         int n = days.length;
         Integer dp[] = new Integer[n+2];
-        return sol(days,costs,dp,0);
-    } 
+        return sol(days,costs,0,dp);
+    }
     
-    public int  sol(int days[],int costs[],Integer dp[],int idx){
+    public int sol(int days[],int costs[],int idx,Integer dp[]){
         if(idx>=days.length){
             return 0;
         }
@@ -14,7 +14,7 @@ class Solution {
             return dp[idx];
         }
         
-        int oneDay = costs[0]+sol(days,costs,dp,idx+1);
+        int oneDay = costs[0]+sol(days,costs,idx+1,dp);
         int i;
         for(i=idx;i<days.length;i++){
             if(days[i]>=days[idx]+7){
@@ -22,15 +22,19 @@ class Solution {
             }
         }
         
-        int sevenDay = costs[1]+sol(days,costs,dp,i);
+        int sevenDay = costs[1]+sol(days,costs,i,dp);
+        
         for(i=idx;i<days.length;i++){
             if(days[i]>=days[idx]+30){
                 break;
             }
         }
         
-        int thirtyDay = costs[2]+sol(days,costs,dp,i);
+        int thirtyDay = costs[2]+sol(days,costs,i,dp);
         
-        return dp[idx] = Math.min(oneDay,Math.min(sevenDay,thirtyDay));
+        dp[idx] = Math.min(oneDay,Math.min(sevenDay,thirtyDay));
+        
+        return dp[idx];
+        
     }
 }
