@@ -1,11 +1,12 @@
 class Solution {
     public int findTargetSumWays(int[] nums, int target) {
         int count = 0;
-        Integer dp[][] = new Integer[nums.length+2][target+2001];
-        return sol(nums,target,0,0,count,dp);
+        int n = nums.length;
+        Integer dp[][] = new Integer[n+2][target+2001];
+        return sol(nums,0,0,count,target,dp);
     }
     
-    public int sol(int nums[],int target,int idx,int sum,int count,Integer dp[][]){
+    public int sol(int nums[],int idx,int sum,int count,int target,Integer dp[][]){
         if(idx==nums.length){
             if(sum==target){
                 count++;
@@ -14,14 +15,15 @@ class Solution {
             return count;
         }
         
+        
         if(dp[idx][sum+1000]!=null){
             return dp[idx][sum+1000];
         }
         
-        int pos = sol(nums,target,idx+1,sum+nums[idx],count,dp);
-        int neg = sol(nums,target,idx+1,sum-nums[idx],count,dp);
-        
+        int pos = sol(nums,idx+1,sum+nums[idx],count,target,dp);
+        int neg = sol(nums,idx+1,sum-nums[idx],count,target,dp);
         
         return dp[idx][sum+1000] = pos+neg;
+        
     }
 }
