@@ -2,8 +2,8 @@ class Solution {
     public int deleteAndEarn(int[] nums) {
         int n = nums.length;
         int dp[] = new int[10001];
-        for(int num : nums){
-            dp[num] += num;
+        for(int x : nums){
+            dp[x] += x;
         }
         Integer res[] = new Integer[dp.length];
         return sol(dp,0,res);
