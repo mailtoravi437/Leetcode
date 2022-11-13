@@ -10,18 +10,18 @@ class Solution {
             return 1;
         }
         
+        
         if(dp[target]!=null){
             return dp[target];
         }
         
-        int ans = 0;
+        int count = 0;
         for(int i=0;i<nums.length;i++){
             if(target-nums[i]>=0){
-                ans += sol(nums,target-nums[i],dp);
+            count += sol(nums,target-nums[i],dp);
             }
         }
         
-        dp[target] = ans;
-        return dp[target];
+        return dp[target] = count;
     }
 }
