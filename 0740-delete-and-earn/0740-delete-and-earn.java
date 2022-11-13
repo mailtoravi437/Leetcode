@@ -1,10 +1,10 @@
 class Solution {
     public int deleteAndEarn(int[] nums) {
+        int n = nums.length;
         int dp[] = new int[10001];
         for(int num : nums){
             dp[num] += num;
         }
-        
         Integer res[] = new Integer[dp.length];
         return sol(dp,0,res);
     }
@@ -18,7 +18,7 @@ class Solution {
             return dp[idx];
         }
         
-        int include = sol(arr,idx+2,dp) + arr[idx];
+        int include = arr[idx] + sol(arr,idx+2,dp);
         int exclude = sol(arr,idx+1,dp);
         
         return dp[idx] = Math.max(include,exclude);
