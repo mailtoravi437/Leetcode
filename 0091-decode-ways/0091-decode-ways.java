@@ -18,7 +18,6 @@ class Solution {
             return dp[idx];
         }
         
-        
         int way1 = sol(s,idx+1,dp);
         int way2 = 0;
         if(idx<s.length()-1 && Integer.parseInt(s.substring(idx,idx+2))<=26){
