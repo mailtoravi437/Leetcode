@@ -7,10 +7,11 @@ class Solution {
             dp[i] = new HashMap<>();
             for(int j=0;j<i;j++){
                 int d = nums[i]-nums[j];
-                
                 dp[i].put(d,dp[j].getOrDefault(d,1)+1);
-                res = Math.max(res,dp[i].get(d));
+                            res = Math.max(res,dp[i].get(d));
+
             }
+            
         }
         
         return res;
