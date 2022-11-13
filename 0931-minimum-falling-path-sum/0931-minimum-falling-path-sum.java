@@ -16,11 +16,6 @@ class Solution {
             }
         }
         
-        int min = Integer.MAX_VALUE;
-        for(int i=0;i<n;i++){
-            min = Math.min(min,matrix[matrix.length-1][i]);
-        }
-        
-        return min;
+        return Arrays.stream(matrix[matrix.length-1]).min().getAsInt();
     }
 }
