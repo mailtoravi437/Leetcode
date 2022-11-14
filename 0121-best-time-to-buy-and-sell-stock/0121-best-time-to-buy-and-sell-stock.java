@@ -11,7 +11,8 @@ class Solution {
             else{
                 profit = prices[i]-min_price;
             }
-            max_profit = Math.max(max_profit,profit);
+            
+            max_profit = Math.max(profit,max_profit);
         }
         
         return max_profit;
