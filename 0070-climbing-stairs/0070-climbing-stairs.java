@@ -1,10 +1,10 @@
 class Solution {
     public int climbStairs(int n) {
         Integer dp[] = new Integer[n+2];
-        return sol(dp,n);
+        return sol(n,dp);
     }
     
-    public int sol(Integer dp[],int n){
+    public int sol(int n,Integer dp[]){
         if(n<=2){
             return n;
         }
@@ -13,9 +13,9 @@ class Solution {
             return dp[n];
         }
         
-        int first = sol(dp,n-1);
-        int second = sol(dp,n-2);
+        int one = sol(n-1,dp);
+        int two = sol(n-2,dp);
         
-        return dp[n] = first+second;
+        return dp[n] = one+two;
     }
 }
