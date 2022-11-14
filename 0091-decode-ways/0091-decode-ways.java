@@ -18,12 +18,13 @@ class Solution {
             return dp[idx];
         }
         
-        int way1 = sol(s,idx+1,dp);
-        int way2 = 0;
+        int ways1 = sol(s,idx+1,dp);
+        int ways2 = 0;
+        
         if(idx<s.length()-1 && Integer.parseInt(s.substring(idx,idx+2))<=26){
-            way2 = sol(s,idx+2,dp);
+            ways2 = sol(s,idx+2,dp);
         }
         
-        return dp[idx] = way1+way2;
+        return dp[idx] = ways1+ways2;
     }
 }
