@@ -12,12 +12,10 @@ class Solution {
         if(dp[n]!=null){
             return dp[n];
         }
-        
         int res = 0;
         for(int i=1;i<=n;i++){
             res += sol(i-1,dp)*sol(n-i,dp);
         }
-        
         return dp[n] = res;
     }
 }
