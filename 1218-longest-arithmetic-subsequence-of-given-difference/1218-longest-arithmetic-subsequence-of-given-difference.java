@@ -5,9 +5,9 @@ class Solution {
         HashMap<Integer,Integer> hmap = new HashMap<>();
         for(int i=0;i<n;i++){
             int temp = 0;
-            int required = arr[i]-difference;
-            if(hmap.containsKey(required)){
-                temp = hmap.get(required);
+            int requires = arr[i]-difference;
+            if(hmap.containsKey(requires)){
+                temp = hmap.get(requires);
             }
             
             hmap.put(arr[i],temp+1);
