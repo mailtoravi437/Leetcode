@@ -1,10 +1,10 @@
 class Solution {
     public int rob(int[] nums) {
         int n = nums.length;
-        return helper(nums,0,n-1);
+        return sol(nums,0,n-1);
     }
     
-    public int helper(int nums[],int low,int high){
+    public int sol(int nums[],int low,int high){
         int include = 0;
         int exclude = 0;
         
