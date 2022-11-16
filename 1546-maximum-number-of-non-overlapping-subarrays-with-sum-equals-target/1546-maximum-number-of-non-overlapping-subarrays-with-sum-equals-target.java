@@ -8,6 +8,7 @@ class Solution {
         
         for(int i=0;i<n;i++){
             sum += nums[i];
+            
             if(hmap.containsKey(sum-target)){
                 res = Math.max(res,hmap.get(sum-target)+1);
             }
