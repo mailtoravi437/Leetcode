@@ -13,30 +13,32 @@ class Solution {
             return n;
         }
         
+        
         if(dp[k][n]!=null){
             return dp[k][n];
         }
         
-        int l = 1;
-        int h = n;
         int ans = Integer.MAX_VALUE;
+        int  l = 1;
+        int h = n;
         
         while(l<=h){
             int mid = l+(h-l)/2;
-            int down = sol(k-1,mid-1,dp);
             int up = sol(k,n-mid,dp);
+            int down = sol(k-1,mid-1,dp);
             
-            int temp = 1+Math.max(down,up);
-            if(down>up){
-                h = mid-1;
+            int temp = 1+ Math.max(up,down);
+            if(up>down){
+                l = mid+1;
             }
             else{
-                l = mid+1;
+                h = mid-1;
             }
             
             ans = Math.min(ans,temp);
         }
         
-        return dp[k][n] = ans;
+        return dp[k][n]=ans;
+        
     }
 }
