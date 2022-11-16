@@ -10,12 +10,12 @@ class Solution {
         
         for(int i=0;i<=k;i++){
             for(int j=0;j<flights.length;j++){
-                int sta_src = flights[j][0];
-                int sta_dest = flights[j][1];
+                int src_temp = flights[j][0];
+                int dest_temp = flights[j][1];
                 int cost = flights[j][2];
                 
-                if(sta[sta_src]!=Integer.MAX_VALUE && sta[sta_src]+cost<tmp[sta_dest]){
-                    tmp[sta_dest] = sta[sta_src]+cost;
+                if(sta[src_temp]!=Integer.MAX_VALUE && sta[src_temp]+cost<tmp[dest_temp]){
+                    tmp[dest_temp] = sta[src_temp]+cost;
                 }
             }
             
