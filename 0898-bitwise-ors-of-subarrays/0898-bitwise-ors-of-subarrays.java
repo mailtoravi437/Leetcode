@@ -7,10 +7,10 @@ class Solution {
         for(int i=0;i<n;i++){
             HashSet<Integer> curr = new HashSet<>();
             curr.add(arr[i]);
-            
             for(int x : prev){
-                curr.add(arr[i]|x);
+                curr.add(arr[i] | x);
             }
+            
             res.addAll(curr);
             
             prev = curr;
