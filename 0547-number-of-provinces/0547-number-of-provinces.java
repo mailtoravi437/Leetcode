@@ -1,46 +1,54 @@
 class Solution {
-    int parent[];
     public int findCircleNum(int[][] isConnected) {
-        int n = isConnected.length;
-        int m = isConnected[0].length;
-        parent = new int[n*m];
+        int M = isConnected.length;
+        int N = isConnected[0].length;
         
-        for(int i=0;i<(n*m);i++){
-            parent[i] = i;
+        if(M==0 || N==0){
+            return 0;
         }
         
-        int count = n;
-        for(int i=0;i<n;i++){
-            for(int j=0;j<m;j++){
+        UnionFind uf = new UnionFind(M);
+        for(int i=0;i<M;i++){
+            for(int j=i+1;j<N;j++){
                 if(isConnected[i][j]==1){
-                    if(isUnion(i,j,parent)){
-                        count--;
-                    }
+                    uf.unite(i,j);
                 }
             }
         }
         
+        Set<Integer> hset = new HashSet<>();
         
-        return count;
-    }
-    
-    public boolean isUnion(int i,int j,int parent[]){
-        int px = find(i,parent);
-        int py = find(j,parent);
-        
-        if(px==py){
-            return false;
+        for(int i=0;i<M;i++){
+            if(uf.f[i]==uf.find(i)){
+                hset.add(uf.f[i]);
+            }
         }
         
-        parent[py]  = px;
-        return true;
+        return hset.size();
+    }
+}
+
+class UnionFind{
+    int f[];
+    public UnionFind(int size){
+        f = new int[size];
+        for(int i=0;i<size;i++){
+            f[i] = i;
+        }
     }
     
-    public int find(int i,int parent[]){
-        if(parent[i]==i){
-            return i;
+    public int find(int x){
+        if(f[x]!=x){
+            f[x] =  find(f[x]);
         }
         
-        return parent[i] = find(parent[i],parent);
+        return f[x];
+    }
+    
+    public void unite(int x,int y){
+        int fx = find(x);
+        int fy = find(y);
+        
+        f[f[y]] = fx; 
     }
 }
