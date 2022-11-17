@@ -1,9 +1,9 @@
 class Solution {
     public int maxProduct(int[] nums) {
         int n = nums.length;
-        int res = nums[0];
         int l = 0;
         int r = 0;
+        int res = nums[0];
         
         for(int i=0;i<n;i++){
             l = ((l==0)?1:l)*nums[i];
