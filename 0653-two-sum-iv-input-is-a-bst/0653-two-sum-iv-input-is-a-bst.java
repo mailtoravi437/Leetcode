@@ -27,11 +27,13 @@ class Solution {
         if(root==null){
             return false;
         }
+        
         if(hset.contains(k-root.val)){
             return true;
         }
         
         hset.add(root.val);
+        
         return helper(root.left,k,hset) || helper(root.right,k,hset);
     }
 }
