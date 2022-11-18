@@ -9,7 +9,7 @@ class Solution {
                 return true;
             }
             
-            if(curr<c){
+            else if(curr<c){
                 left++;
             }
             else{
