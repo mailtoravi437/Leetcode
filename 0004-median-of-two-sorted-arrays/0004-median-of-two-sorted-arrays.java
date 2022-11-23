@@ -11,7 +11,7 @@ class Solution {
         int high = n1;
         
         while(low<=high){
-            int mid1 = low+(high-low)/2;
+            int mid1 = (low+high)/2;
             int mid2 = (n1+n2)/2-mid1;
             
             int left1 = mid1==0?Integer.MIN_VALUE:nums1[mid1-1];
@@ -28,7 +28,7 @@ class Solution {
             }
             else{
                 if((n1+n2)%2==0){
-                    return (Math.max(left1,left2)*0.5+Math.min(right1,right2)*0.5);
+                    return Math.min(right1,right2)*0.5+Math.max(left1,left2)*0.5;
                 }
                 else{
                     return Math.min(right1,right2);
