@@ -1,22 +1,21 @@
 class Solution {
     public List<String> generateParenthesis(int n) {
         List<String> res = new ArrayList<>();
-        sol(0,res,0,0,"",n);
+        sol(res,0,0,"",n);
         return res;
     }
     
-    public void sol(int idx,List<String> res,int open,int close,String str,int n){
-        if(str.length()==2*n){
+    public void sol(List<String> res,int open,int close,String str,int max){
+        if(str.length()==2*max){
             res.add(str);
             return;
         }
         
-        if(open<n){
-            sol(idx+1,res,open+1,close,str+"(",n);
+        if(open<max){
+            sol(res,open+1,close,str+"(",max);
         }
-        
         if(close<open){
-            sol(idx+1,res,open,close+1,str+")",n);
+            sol(res,open,close+1,str+")",max);
         }
     }
 }
