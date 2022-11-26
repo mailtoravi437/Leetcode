@@ -3,13 +3,12 @@ class Solution {
         List<List<Integer>> ans = new ArrayList<>();
         List<Integer> res = new ArrayList<>();
         Arrays.sort(candidates);
-        backtrack(candidates,ans,res,target,0);
         
+        sol(candidates,ans,res,0,target);
         return ans;
     }
     
-    
-    public void backtrack(int candidates[],List<List<Integer>> ans,List<Integer> res,int target,int start){
+    public void sol(int candidates[],List<List<Integer>> ans,List<Integer> res,int idx,int target){
         if(target<0){
             return;
         }
@@ -18,11 +17,11 @@ class Solution {
             ans.add(new ArrayList<>(res));
         }
         
-        for(int i=start;i<candidates.length;i++){
+        
+        for(int i=idx;i<candidates.length;i++){
             res.add(candidates[i]);
-            backtrack(candidates,ans,res,target-candidates[i],i);
+            sol(candidates,ans,res,i,target-candidates[i]);
             res.remove(res.size()-1);
         }
     }
-    
 }
