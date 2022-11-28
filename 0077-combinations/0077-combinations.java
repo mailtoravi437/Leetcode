@@ -1,21 +1,22 @@
 class Solution {
     public List<List<Integer>> combine(int n, int k) {
-        List<List<Integer>> res = new ArrayList<>();
-        List<Integer> ans = new ArrayList<>();
+        List<List<Integer>> ans = new ArrayList<>();
+        List<Integer> res = new ArrayList<>();
         
         sol(n,k,1,ans,res);
-        return res;
+        return ans;
     }
     
-    public void sol(int n,int k,int start,List<Integer> ans,List<List<Integer>> res){
+    public void sol(int n,int k,int start,List<List<Integer>> ans,List<Integer> res){
         if(k==0){
-            res.add(new ArrayList<>(ans));
+            ans.add(new ArrayList<>(res));
             return;
         }
+        
         for(int i=start;i<=n;i++){
-            ans.add(i);
+            res.add(i);
             sol(n,k-1,i+1,ans,res);
-            ans.remove(ans.size()-1);
+            res.remove(res.size()-1);
         }
     }
 }
