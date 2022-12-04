@@ -1,24 +1,24 @@
 class Solution {
     public boolean canFinish(int n, int[][] prerequisites) {
         if(n==0){
-            return true;
+            return false;
         }
         
-        ArrayList<ArrayList<Integer>> alist = new ArrayList<>();
+        List<List<Integer>> alist = new ArrayList<>();
         for(int i=0;i<n;i++){
             alist.add(new ArrayList<>());
         }
         
         int inDegree[] = new int[n];
-        
         for(int edge[] : prerequisites){
-            int a = edge[0];
-            int b = edge[1];
+            int u = edge[0];
+            int v = edge[1];
             
-            alist.get(b).add(a);
-            inDegree[a]++;
+            alist.get(v).add(u);
+            inDegree[u]++;
         }
         
+        int ans = 0;
         Queue<Integer> queue = new LinkedList<>();
         for(int i=0;i<n;i++){
             if(inDegree[i]==0){
@@ -26,7 +26,6 @@ class Solution {
             }
         }
         
-        int ans = 0;
         while(!queue.isEmpty()){
             int size = queue.size();
             for(int i=0;i<size;i++){
