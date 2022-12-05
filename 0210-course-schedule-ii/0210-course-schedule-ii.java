@@ -31,6 +31,7 @@ class Solution {
             while(it.hasNext()){
                 int m = it.next();
                 inDegree[m]--;
+                
                 if(inDegree[m]==0){
                     queue.add(m);
                 }
@@ -42,6 +43,7 @@ class Solution {
         }
         
         int res[] = new int[n];
+        
         for(int i=0;i<n;i++){
             res[i] = ans.get(i);
         }
