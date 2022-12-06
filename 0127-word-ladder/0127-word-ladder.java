@@ -9,19 +9,21 @@ class Solution {
         if(beginWord.equals(endWord)){
             return 1;
         }
+        
         Queue<String> queue = new LinkedList<>();
         queue.add(beginWord);
         
-        while(queue.size()>0){
+        while(!queue.isEmpty()){
             int size = queue.size();
             for(int i=0;i<size;i++){
-                String str = queue.poll();
-                char ch[] = str.toCharArray();
-                for(int j=0;j<str.length();j++){
-                    char tmp = str.charAt(j);
+                String temp = queue.poll();
+                char ch[] = temp.toCharArray();
+                
+                for(int j=0;j<ch.length;j++){
+                    char temp1 = ch[j];
+                    
                     for(char c='a';c<='z';c++){
                         ch[j] = c;
-                        
                         String newWord = String.valueOf(ch);
                         if(hset.contains(newWord)){
                             if(newWord.equals(endWord)){
@@ -32,7 +34,8 @@ class Solution {
                             hset.remove(newWord);
                         }
                     }
-                    ch[j] = tmp;
+                    
+                    ch[j] = temp1;
                 }
             }
             count+=1;
