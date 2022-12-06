@@ -1,8 +1,11 @@
 class Solution {
     public int numIslands(char[][] grid) {
         int count = 0;
-        for(int i=0;i<grid.length;i++){
-            for(int j=0;j<grid[0].length;j++){
+        int m = grid.length;
+        int n = grid[0].length;
+        
+        for(int i=0;i<m;i++){
+            for(int j=0;j<n;j++){
                 if(grid[i][j]=='1'){
                     dfs(grid,i,j);
                     count++;
