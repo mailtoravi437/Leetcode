@@ -2,6 +2,7 @@ class Solution {
     public int minimumTotal(List<List<Integer>> triangle) {
         int n = triangle.size();
         Integer dp[][] = new Integer[n+2][n+2];
+        
         return sol(triangle,0,0,dp);
     }
     
@@ -15,6 +16,6 @@ class Solution {
             path += Math.min(sol(triangle,level+1,i,dp),sol(triangle,level+1,i+1,dp));
         }
         
-        return dp[level][i]=path;
+        return dp[level][i] = path;
     }
 }
