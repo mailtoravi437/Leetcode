@@ -1,12 +1,14 @@
 class Solution {
     public int numIdenticalPairs(int[] nums) {
-        int res[] = new int[101];
-        int count = 0;
+        HashMap<Integer,Integer> hmap = new HashMap<>();
         
-        for(int a : nums){
-            count += res[a]++;
+        int res = 0;
+        for(int i=0;i<nums.length;i++){
+            int ans = hmap.getOrDefault(nums[i],0);
+            res += ans;
+            hmap.put(nums[i],ans+1);
         }
         
-        return count;
+        return res;
     }
 }
