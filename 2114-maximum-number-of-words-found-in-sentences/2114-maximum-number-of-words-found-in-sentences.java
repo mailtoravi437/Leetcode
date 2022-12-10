@@ -1,13 +1,12 @@
 class Solution {
     public int mostWordsFound(String[] sentences) {
-        int ans = 0;
-        int maxans = 0;
-        for(String str : sentences){
-            String str1[] = str.split(" ");
-            ans = str1.length;
-            maxans = Math.max(maxans,ans);
+        int max = Integer.MIN_VALUE;
+        int n = sentences.length;
+        for(int i=0;i<n;i++){
+            int x = sentences[i].split(" ").length;
+            max = Math.max(x,max);
         }
         
-        return maxans;
+        return max;
     }
 }
