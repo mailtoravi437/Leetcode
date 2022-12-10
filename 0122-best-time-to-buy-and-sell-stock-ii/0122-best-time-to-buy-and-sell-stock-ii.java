@@ -5,7 +5,7 @@ class Solution {
         return sol(prices,0,0,dp);
     }
     
-    public int sol(int prices[],int buy,int idx,Integer dp[][]){
+    public int sol(int prices[],int idx,int buy,Integer dp[][]){
         if(dp[idx][buy]!=null){
             return dp[idx][buy];
         }
@@ -14,20 +14,21 @@ class Solution {
             return 0;
         }
         
-        int max = 0;
+        int maxprofit = 0;
+        
         if(buy==0){
-            int buytoday = -prices[idx]+sol(prices,1,idx+1,dp);
-            int notBuy = sol(prices,0,idx+1,dp);
+            int buyToday = -prices[idx]+sol(prices,idx+1,1,dp);
+            int notBuy = sol(prices,idx+1,0,dp);
             
-            max = Math.max(buytoday,notBuy);
+            maxprofit = Math.max(buyToday,notBuy);
         }
         else{
-            int sellToday = prices[idx]+sol(prices,0,idx+1,dp);
-            int notSell = sol(prices,1,idx+1,dp);
+            int sellToday = prices[idx]+sol(prices,idx+1,0,dp);
+            int notSell = sol(prices,idx+1,1,dp);
             
-            max = Math.max(sellToday,notSell);
+            maxprofit = Math.max(sellToday,notSell);
         }
         
-        return dp[idx][buy] = max;
+        return dp[idx][buy] = maxprofit;
     }
 }
