@@ -35,10 +35,11 @@ class Solution {
             }
             
             ways += sol(s,i+1,t,j,dp);
-            dp[i][j] = ways;
+            
+            return dp[i][j] = ways;
         }
         
-        return dp[i][j];
+        
+        
     }
-    
 }
