@@ -4,42 +4,41 @@ class Solution {
         int m = t.length();
         
         Integer dp[][] = new Integer[n+2][m+2];
-        
         return sol(s,0,t,0,dp);
     }
     
-    public int sol(String s,int n,String t,int m,Integer dp[][]){
-        if(dp[n][m]!=null){
-            return dp[n][m];
+    public int sol(String s,int i,String t,int j,Integer dp[][]){
+        if(dp[i][j]!=null){
+            return dp[i][j];
         }
         
-        if(m==t.length()){
+        else if(j==t.length()){
             return 1;
         }
         
-        else if(n==s.length() && m<t.length()){
+        else if(i==s.length() && j<t.length()){
             return 0;
         }
-        else if(n==s.length()-1 && m==t.length()-1){
-            if(s.charAt(n)==t.charAt(m)){
-                dp[n][m] = 1;
+        
+        else if(i==s.length()-1 && j==t.length()-1){
+            if(s.charAt(i)==t.charAt(j)){
+                return dp[i][j] = 1;
             }
             else{
-                dp[n][m] =  0;
+                return dp[i][j] = 0;
             }
         }
-        
         else{
             int ways = 0;
-            if(s.charAt(n)==t.charAt(m)){
-                ways += sol(s,n+1,t,m+1,dp);
+            if(s.charAt(i)==t.charAt(j)){
+                ways += sol(s,i+1,t,j+1,dp);
             }
             
-            ways += sol(s,n+1,t,m,dp);
-            dp[n][m] = ways;
+            ways += sol(s,i+1,t,j,dp);
+            dp[i][j] = ways;
         }
         
-        return dp[n][m];
-        
+        return dp[i][j];
     }
+    
 }
