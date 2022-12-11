@@ -6,15 +6,16 @@ class Solution {
     }
     
     public int sol(String s,int idx,int n,Integer dp[]){
-         if(idx==n){
-             return 0;
-         }
+        if(idx==n){
+            return 0;
+        }
         
         if(dp[idx]!=null){
             return dp[idx];
         }
         
         int ans = Integer.MAX_VALUE;
+        
         for(int k=idx;k<n;k++){
             if(isPalindrome(s,idx,k)){
                 int next = sol(s,k+1,n,dp);
@@ -38,4 +39,4 @@ class Solution {
         
         return true;
     }
-};
+}
