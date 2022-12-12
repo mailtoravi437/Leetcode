@@ -1,13 +1,11 @@
 class Solution {
     public int lengthOfLIS(int[] nums) {
         int n = nums.length;
-        
         if(n==0){
             return 0;
         }
         
         int dp[] = new int[n+1];
-        
         Arrays.fill(dp,Integer.MAX_VALUE);
         dp[0] = Integer.MIN_VALUE;
         
@@ -19,21 +17,19 @@ class Solution {
         }
         
         int ma = n;
-        int ans = 0;
-        
         for(int i=n;i>=0;i--){
             if(dp[i]!=Integer.MAX_VALUE){
-                ans = i;
+                ma = i;
                 break;
             }
         }
         
-        return ans;
+        return ma;
     }
     
-    public int lower_bound(int key,int low,int high,int dp[]){
-        int s = low;
-        int e = high;
+    public int lower_bound(int key,int start,int end,int dp[]){
+        int s = start;
+        int e = end;
         
         while(s<=e){
             int mid = s+(e-s)/2;
