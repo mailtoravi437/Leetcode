@@ -5,7 +5,7 @@ class Solution {
         
         while(i<j){
             if(s.charAt(i)!=s.charAt(j)){
-                return isPalindrome(s,i+1,j ) || isPalindrome(s,i,j-1);
+                return isPalindrome(s,i,j-1) || isPalindrome(s,i+1,j);
             }
             
             i++;
@@ -20,7 +20,6 @@ class Solution {
             if(s.charAt(i)!=s.charAt(j)){
                 return false;
             }
-            
             i++;
             j--;
         }
