@@ -20,20 +20,23 @@ class Solution {
             int right1 = mid1==n1?Integer.MAX_VALUE:nums1[mid1];
             int right2 = mid2==n2?Integer.MAX_VALUE:nums2[mid2];
             
+            
             if(left1>right2){
                 high = mid1-1;
             }
             else if(left2>right1){
                 low = mid1+1;
             }
+            
             else{
                 if((n1+n2)%2==0){
-                    return Math.min(right1,right2)*0.5+Math.max(left1,left2)*0.5;
+                    return (double)Math.max(left1,left2)*0.5+Math.min(right1,right2)*0.5;
                 }
                 else{
-                    return Math.min(right1,right2);
+                    return (double)Math.min(right1,right2);
                 }
             }
+            
         }
         
         return 0.0;
