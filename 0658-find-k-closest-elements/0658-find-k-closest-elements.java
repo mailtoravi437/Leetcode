@@ -4,9 +4,7 @@ class Solution {
         int high = arr.length-1;
         
         while(high-low>=k){
-            int mid = low+(high-low)/2;
-            
-            if(Math.abs(arr[low]-x)>Math.abs(arr[high]-x)){
+            if(Math.abs(x-arr[low])>Math.abs(x-arr[high])){
                 low++;
             }
             else{
@@ -15,10 +13,10 @@ class Solution {
         }
         
         List<Integer> res = new ArrayList<>();
-        for(int i=low;i<=high;i++){
-            res.add(arr[i]);
+        while(low<=high){
+            res.add(arr[low]);
+            low++;
         }
-        
         return res;
     }
 }
