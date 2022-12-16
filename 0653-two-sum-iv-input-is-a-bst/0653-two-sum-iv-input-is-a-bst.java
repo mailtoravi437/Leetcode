@@ -20,10 +20,10 @@ class Solution {
         }
         
         Set<Integer> hset = new HashSet<>();
-        return helper(root,k,hset);
+        return sol(root,k,hset);
     }
     
-    public boolean helper(TreeNode root,int k,Set<Integer> hset){
+    public boolean sol(TreeNode root,int k,Set<Integer> hset){
         if(root==null){
             return false;
         }
@@ -33,7 +33,6 @@ class Solution {
         }
         
         hset.add(root.val);
-        
-        return helper(root.left,k,hset) || helper(root.right,k,hset);
+        return sol(root.left,k,hset) || sol(root.right,k,hset);
     }
 }
