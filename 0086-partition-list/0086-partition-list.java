@@ -13,25 +13,26 @@ class Solution {
         ListNode left = new ListNode(0);
         ListNode right = new ListNode(0);
         
-        ListNode leftTail = left;
-        ListNode rightTail = right;
+        ListNode lefttail = left;
+        ListNode righttail = right;
+        
         
         while(head!=null){
             if(head.val<x){
-                leftTail.next = head;
-                leftTail = leftTail.next;
+                lefttail.next = head;
+                lefttail = lefttail.next;
+                head = head.next;
             }
             else{
-                rightTail.next = head;
-                rightTail = rightTail.next;
+                righttail.next = head;
+                righttail = righttail.next;
+                head = head.next;
             }
-            
-            head = head.next;
         }
         
-        leftTail.next = right.next;
-        rightTail.next = null;
-        
+        lefttail.next = right.next;
+        righttail.next = null;
         return left.next;
+        
     }
 }
