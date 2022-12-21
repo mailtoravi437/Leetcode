@@ -11,28 +11,28 @@
 class Solution {
     public ListNode mergeKLists(ListNode[] lists) {
         int n = lists.length;
-        return mergeSort(lists,0,n-1);
+        ListNode res = mergeSort(lists,0,n-1);
+        return res;
     }
     
-    public ListNode mergeSort(ListNode lists[],int s,int e){
-        if(s==e){
-            return lists[s];
+    public ListNode mergeSort(ListNode[] lists,int low,int high){
+        if(low==high){
+            return lists[low];
         }
         
-        if(s<e){
-            int mid = s+(e-s)/2;
-            ListNode l1 = mergeSort(lists,s,mid);
-            ListNode l2 = mergeSort(lists,mid+1,e);
+        if(low<=high){
+            int mid = low+(high-low)/2;
+            ListNode l1 = mergeSort(lists,low,mid);
+            ListNode l2 = mergeSort(lists,mid+1,high);
             
             return merge(l1,l2);
         }
         
-        else{
-            return null;
-        }
+        return null;
     }
     
     public ListNode merge(ListNode l1,ListNode l2){
+         
         if(l1==null){
             return l2;
         }
@@ -45,7 +45,6 @@ class Solution {
             l1.next = merge(l1.next,l2);
             return l1;
         }
-        
         else{
             l2.next = merge(l1,l2.next);
             return l2;
