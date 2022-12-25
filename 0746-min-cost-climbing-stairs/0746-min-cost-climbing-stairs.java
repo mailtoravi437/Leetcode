@@ -2,10 +2,10 @@ class Solution {
     public int minCostClimbingStairs(int[] cost) {
         int n = cost.length;
         Integer dp[] = new Integer[n+2];
-        return sol(cost,dp,n);
+        return sol(n,cost,dp);
     }
     
-    public int sol(int costs[],Integer dp[],int n){
+    public int sol(int n,int cost[],Integer dp[]){
         if(n==0 || n==1){
             return 0;
         }
@@ -14,9 +14,9 @@ class Solution {
             return dp[n];
         }
         
-        int one = costs[n-1]+sol(costs,dp,n-1);
-        int two = costs[n-2]+sol(costs,dp,n-2);
+        int op1 = cost[n-1]+sol(n-1,cost,dp);
+        int op2 = cost[n-2]+sol(n-2,cost,dp);
         
-        return dp[n] = Math.min(one,two);
+        return dp[n] = Math.min(op1,op2);
     }
 }
