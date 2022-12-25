@@ -13,9 +13,9 @@ class Solution {
             return dp[n];
         }
         
-        int one = sol(n-1,dp);
-        int two = sol(n-2,dp);
+        int op1 = sol(n-1,dp);
+        int op2 = sol(n-2,dp);
         
-        return dp[n] = one+two;
+        return dp[n] = op1+op2;
     }
 }
