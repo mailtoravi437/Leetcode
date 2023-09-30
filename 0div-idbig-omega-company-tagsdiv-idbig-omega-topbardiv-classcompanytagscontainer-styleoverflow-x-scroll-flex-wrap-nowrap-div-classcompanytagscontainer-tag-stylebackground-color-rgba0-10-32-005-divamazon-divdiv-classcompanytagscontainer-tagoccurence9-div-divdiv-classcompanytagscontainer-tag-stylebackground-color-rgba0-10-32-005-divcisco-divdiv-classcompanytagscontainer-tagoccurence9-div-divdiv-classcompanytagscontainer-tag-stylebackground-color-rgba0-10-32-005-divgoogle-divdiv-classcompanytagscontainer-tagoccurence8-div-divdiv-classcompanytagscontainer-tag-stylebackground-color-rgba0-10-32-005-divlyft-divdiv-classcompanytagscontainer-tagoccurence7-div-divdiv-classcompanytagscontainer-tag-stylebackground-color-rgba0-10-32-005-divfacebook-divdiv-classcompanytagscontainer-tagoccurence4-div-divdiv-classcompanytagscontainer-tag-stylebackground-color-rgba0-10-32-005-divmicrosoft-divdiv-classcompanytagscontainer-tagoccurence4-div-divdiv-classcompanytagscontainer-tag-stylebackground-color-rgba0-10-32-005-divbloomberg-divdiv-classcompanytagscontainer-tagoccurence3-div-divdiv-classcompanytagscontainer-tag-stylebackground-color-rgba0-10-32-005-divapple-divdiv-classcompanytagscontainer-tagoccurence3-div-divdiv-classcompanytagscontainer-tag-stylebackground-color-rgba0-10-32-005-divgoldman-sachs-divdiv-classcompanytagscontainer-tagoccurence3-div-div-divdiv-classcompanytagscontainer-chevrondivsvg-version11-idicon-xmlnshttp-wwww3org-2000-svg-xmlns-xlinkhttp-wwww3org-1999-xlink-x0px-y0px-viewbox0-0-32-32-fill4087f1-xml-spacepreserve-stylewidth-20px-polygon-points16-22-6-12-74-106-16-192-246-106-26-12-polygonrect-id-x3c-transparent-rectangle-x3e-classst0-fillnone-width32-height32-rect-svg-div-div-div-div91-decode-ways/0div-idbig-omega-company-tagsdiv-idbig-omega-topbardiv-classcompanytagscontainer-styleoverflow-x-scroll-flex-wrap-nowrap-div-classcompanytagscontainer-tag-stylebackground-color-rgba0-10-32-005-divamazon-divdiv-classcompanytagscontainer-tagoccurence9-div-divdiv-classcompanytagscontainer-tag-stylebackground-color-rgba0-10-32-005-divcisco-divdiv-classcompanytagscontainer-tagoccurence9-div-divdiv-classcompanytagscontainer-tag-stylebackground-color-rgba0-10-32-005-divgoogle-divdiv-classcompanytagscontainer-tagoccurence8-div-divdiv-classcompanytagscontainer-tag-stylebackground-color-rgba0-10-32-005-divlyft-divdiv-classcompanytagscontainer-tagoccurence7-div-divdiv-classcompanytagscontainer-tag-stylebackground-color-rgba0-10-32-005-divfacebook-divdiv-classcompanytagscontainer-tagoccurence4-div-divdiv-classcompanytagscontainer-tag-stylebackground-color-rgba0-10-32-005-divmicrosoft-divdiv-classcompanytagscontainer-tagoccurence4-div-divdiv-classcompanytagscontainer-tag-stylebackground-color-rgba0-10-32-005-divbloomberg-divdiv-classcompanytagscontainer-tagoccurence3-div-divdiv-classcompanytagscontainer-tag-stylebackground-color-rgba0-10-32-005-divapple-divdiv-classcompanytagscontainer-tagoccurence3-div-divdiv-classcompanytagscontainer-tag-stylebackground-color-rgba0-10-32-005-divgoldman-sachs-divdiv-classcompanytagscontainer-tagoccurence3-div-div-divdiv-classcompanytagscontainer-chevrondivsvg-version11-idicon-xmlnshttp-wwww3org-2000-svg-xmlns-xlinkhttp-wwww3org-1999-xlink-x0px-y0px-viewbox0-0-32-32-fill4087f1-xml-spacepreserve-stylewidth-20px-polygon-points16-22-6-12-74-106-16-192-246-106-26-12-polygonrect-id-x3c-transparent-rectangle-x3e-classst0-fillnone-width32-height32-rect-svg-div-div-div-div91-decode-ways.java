@@ -6,7 +6,9 @@ class Solution {
         Arrays.fill(dp,-1);
         
         return sol(s,dp,0);
+        
     }
+    
     
     public int sol(String s,int dp[],int idx){
         int n = s.length();
@@ -14,17 +16,16 @@ class Solution {
             return 1;
         }
         
+        if(s.charAt(idx)=='0'){
+            return 0;
+        }
         if(dp[idx]!=-1){
             return dp[idx];
         }
         
-        if(s.charAt(idx)=='0'){
-            return 0;
-        }
-        
         int count = sol(s,dp,idx+1);
         
-        if(idx<n-1 &&  Integer.parseInt(s.substring(idx,idx+2))<27){
+        if(idx<n-1 && Integer.parseInt(s.substring(idx,idx+2))<27){
             count += sol(s,dp,idx+2);
         }
         
